@@ -1,18 +1,24 @@
 import React, { useState } from "react"
+import { GetStaticProps } from "next"
 import Head from "next/head"
+import { useMenuState } from "@/hooks/useToggleMenu"
 import clsx from "clsx"
 import { marked } from "marked"
 
+import { fetchPosts } from "@/lib/fetchData"
 import HTMLOutput from "@/components/HTMLOutput/HTMLOutput"
+import Menu from "@/components/Menu/Menu"
 import { Icons } from "@/components/icons"
 import { Layout } from "@/components/layout"
 import { Textarea } from "@/components/ui/textarea"
 
-export default function IndexPage() {
+export default function IndexPage({ posts }) {
   const [show, setShow] = useState(true)
   const [markdownInput, setMarkdownInput] = useState("")
   const [html, setHtml] = useState("")
+  const [menuState, setMenuState] = useMenuState()
 
+  console.log(menuState, "menu state")
   return (
     <Layout>
       <Head>
@@ -24,7 +30,8 @@ export default function IndexPage() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section className="flex">
+      <section className="relative isolate flex">
+        {menuState && <Menu posts={posts} />}
         <div className={clsx(!show && "hidden", "flex-1")}>
           <div className="flex items-center justify-between bg-stone-800 p-3">
             <h3 className="font-mono text-xl font-normal">MARKDOWN</h3>
@@ -66,4 +73,14 @@ export default function IndexPage() {
       </section>
     </Layout>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = await fetchPosts()
+
+  return {
+    props: {
+      posts,
+    },
+  }
 }

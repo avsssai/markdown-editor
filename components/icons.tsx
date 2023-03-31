@@ -1,4 +1,5 @@
 import {
+  ChevronsLeft,
   Eye,
   EyeOff,
   File,
@@ -25,6 +26,7 @@ export const Icons = {
   trash: Trash,
   file: File,
   eye: Eye,
+  chevronsLeft: ChevronsLeft,
   eyeOff: EyeOff,
 
   logo: (props: LucideProps) => (

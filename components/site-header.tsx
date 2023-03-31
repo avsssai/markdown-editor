@@ -1,18 +1,27 @@
+import { useState } from "react"
 import Link from "next/link"
+import { useMenuState } from "@/hooks/useToggleMenu"
 
 import { siteConfig } from "@/config/site"
 import { Icons } from "@/components/icons"
-import { ThemeToggle } from "@/components/theme-toggle"
 import { Button } from "./ui/button"
 import { Separator } from "./ui/separator"
 
 export function SiteHeader() {
+  const [menuState, setMenuState] = useMenuState()
   return (
     <header className="sticky top-0 z-40 w-full border-b  border-b-stone-700 bg-stone-900 text-white">
       <div className="flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
         <nav className="flex items-center space-x-4">
-          <div className="h-full w-full bg-zinc-500 p-5">
-            <Icons.menu size={24} />
+          <div
+            className="h-full w-full bg-zinc-500 p-5"
+            onClick={() => setMenuState(!menuState)}
+          >
+            {menuState ? (
+              <Icons.chevronsLeft size={24} />
+            ) : (
+              <Icons.menu size={24} />
+            )}
           </div>
           <div className=" hidden items-center  px-8 lg:flex">
             <span className="tracking-[4px]">MARKDOWN</span>
