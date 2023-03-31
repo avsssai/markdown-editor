@@ -2,50 +2,45 @@ import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
 import { Icons } from "@/components/icons"
-import { MainNav } from "@/components/main-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { buttonVariants } from "@/components/ui/button"
+import { Button } from "./ui/button"
+import { Separator } from "./ui/separator"
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-b-slate-200 bg-white dark:border-b-slate-700 dark:bg-slate-900">
-      <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
-        <MainNav items={siteConfig.mainNav} />
-        <div className="flex flex-1 items-center justify-end space-x-4">
-          <nav className="flex items-center space-x-1">
-            <Link
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div
-                className={buttonVariants({
-                  size: "sm",
-                  variant: "ghost",
-                  className: "text-slate-700 dark:text-slate-400",
-                })}
-              >
-                <Icons.gitHub className="h-5 w-5" />
-                <span className="sr-only">GitHub</span>
+    <header className="sticky top-0 z-40 w-full border-b  border-b-stone-700 bg-stone-900 text-white">
+      <div className="flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
+        <nav className="flex items-center space-x-4">
+          <div className="h-full w-full bg-zinc-500 p-5">
+            <Icons.menu size={24} />
+          </div>
+          <div className=" hidden items-center  px-8 lg:flex">
+            <span className="tracking-[4px]">MARKDOWN</span>
+            <Separator orientation="vertical" className="!bg-white" />
+          </div>
+          <div className="flex items-center gap-4 text-lg">
+            <Icons.file />
+            <div className="">
+              <div className="hidden w-fit text-xs text-gray-400 md:block">
+                Document Name
               </div>
-            </Link>
-            <Link
-              href={siteConfig.links.twitter}
-              target="_blank"
-              rel="noreferrer"
+              welcome.md
+            </div>
+          </div>
+        </nav>
+        <div className="flex flex-1 items-center justify-end space-x-4 pr-3">
+          <nav className="flex items-center space-x-5">
+            <Icons.trash />
+            <Button variant="save" className="md:hidden">
+              <Icons.save />
+            </Button>
+            <Button
+              variant="save"
+              className="hidden items-center gap-2 md:flex"
             >
-              <div
-                className={buttonVariants({
-                  size: "sm",
-                  variant: "ghost",
-                  className: "text-slate-700 dark:text-slate-400",
-                })}
-              >
-                <Icons.twitter className="h-5 w-5 fill-current" />
-                <span className="sr-only">Twitter</span>
-              </div>
-            </Link>
-            <ThemeToggle />
+              <Icons.save /> Save Changes
+            </Button>
+            {/* <ThemeToggle /> */}
           </nav>
         </div>
       </div>
