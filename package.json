@@ -11,7 +11,8 @@
     "typecheck": "tsc --noEmit",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
-    "start:server": "json-server --watch data.json --port 4000"
+    "start:server": "json-server --watch data.json --port 4000",
+    "start:application": "npm-run-all dev start:server"
   },
   "dependencies": {
     "@next/font": "^13.1.6",
@@ -54,6 +55,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sharp": "^0.31.3",
+    "swr": "^2.1.2",
     "tailwind-merge": "^1.8.0",
     "tailwindcss-animate": "^1.0.5"
   },

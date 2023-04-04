@@ -18,7 +18,7 @@ function useMenuState() {
 }
 
 const MenuProvider: React.FC = (props) => {
-  const [menuState, setMenuState] = React.useState<StateType>(false)
+  const [menuState, setMenuState] = React.useState<StateType>(true)
   const value: ContextType = { menuState, setMenuState }
 
   return <MenuContext.Provider value={value} {...props} />

@@ -1,3 +1,16 @@
+.htmlOutput > * {
+  margin-bottom: 1rem;
+}
+
+.htmlOutput h1,
+.htmlOutput h2,
+.htmlOutput h3,
+.htmlOutput h4,
+.htmlOutput h5,
+.htmlOutput h6 {
+  margin-bottom: 2rem;
+}
+
 .htmlOutput {
   padding: 8px 12px;
 }
